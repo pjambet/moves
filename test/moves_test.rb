@@ -93,7 +93,6 @@ class TestMoves < Minitest::Test
   end
 
   def test_daily_places_week
-    stub_get('/user/places/daily').to_return(:body => fixture('daily_activity.json'))
     assert_works @client.daily_places(@week)
   end
 
