@@ -15,6 +15,12 @@ class TestMoves < Minitest::Test
     @date = Date.today
     @from_to_time = {:from => @time - 86400, :to => @time}
     @time_range = (@time - 86400)..@time
+
+    stub_get('user/summary/daily').to_return(:body => fixture('daily_summary.json'))
+    stub_get('user/activities/daily').to_return(:body => fixture('daily_activity.json'))
+    stub_get('user/places/daily').to_return(:body => fixture('daily_place.json'))
+    stub_get('user/storyline/daily').to_return(:body => fixture('daily_storyline.json'))
+    stub_get('user/profile').to_return(:body => fixture('profile.json'))
   end
 
   def test_profile
@@ -62,15 +68,15 @@ class TestMoves < Minitest::Test
     assert_works @client.daily_summary(@time_range)
   end
 
-  def test_daily_activites
+  def test_daily_activities
     assert_works @client.daily_activities
   end
 
-  def test_daily_activites_day
+  def test_daily_activities_day
     assert_works @client.daily_activities(@day)
   end
 
-  def test_daily_activites_week
+  def test_daily_activities_week
     assert_works @client.daily_activities(@week)
   end
 
@@ -87,6 +93,7 @@ class TestMoves < Minitest::Test
   end
 
   def test_daily_places_week
+    stub_get('/user/places/daily').to_return(:body => fixture('daily_activity.json'))
     assert_works @client.daily_places(@week)
   end
 
