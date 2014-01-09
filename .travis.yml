@@ -14,8 +14,6 @@ rvm:
 script: bundle exec rake test
 matrix:
   include:
-    - rvm: jruby-18mode
-      env: JRUBY_OPTS="$JRUBY_OPTS --debug"
     - rvm: jruby-19mode
       env: JRUBY_OPTS="$JRUBY_OPTS --debug"
     - rvm: jruby-head
