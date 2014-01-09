@@ -1,3 +1,5 @@
+[![Build Status](https://next.travis-ci.org/pjambet/moves.png?branch=feature/travis)](https://next.travis-ci.org/pjambet/moves)
+
 # Moves
 
 Ruby client for [Moves](https://dev.moves-app.com/docs/overview)
